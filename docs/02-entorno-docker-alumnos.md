@@ -1,5 +1,7 @@
 # Entorno listo en Docker (para alumnos)
 
+> Versión para imprimir: [PDF con formato Canvia](pdf/manual-entorno-docker-restassured.pdf).
+
 Si tu PC no logra instalar Java o Maven (permisos, proxy, versión vieja de Java), usa este entorno:
 con **un doble clic** levanta un contenedor con JDK 17, Maven 3.9 y VS Code con las extensiones del curso,
 y lo abre en tu navegador. Trabajas sobre los archivos de esta misma carpeta.

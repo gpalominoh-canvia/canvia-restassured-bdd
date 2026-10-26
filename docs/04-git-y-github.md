@@ -1,5 +1,7 @@
 # Git y GitHub: lo mínimo para trabajar en el curso
 
+> Versión para imprimir: [PDF con formato Canvia](pdf/manual-git-github.pdf).
+
 Esta guía te lleva desde una PC sin Git hasta entregar tu primer ejercicio con un Pull Request.
 No necesitas saber nada antes. Sigue las secciones en orden la primera vez; después usa la
 [chuleta](#9-chuleta-de-comandos) del final.

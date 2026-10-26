@@ -1,5 +1,7 @@
 # Windows en Docker (demo del instructor)
 
+> Versión para imprimir: [PDF con formato Canvia](pdf/manual-entorno-docker-restassured.pdf).
+
 Levanta un **Windows 11 recién instalado** dentro de Docker para mostrar en clase la instalación completa,
 paso a paso, sobre una máquina limpia. Usa la imagen [`dockurr/windows`](https://github.com/dockur/windows),
 que descarga Windows desde Microsoft, lo instala solo y lo muestra en el navegador.
@@ -10,6 +12,37 @@ Archivos en [`docker/windows/`](../docker/windows/).
 |---|---|---|
 | `limpio` | Demo en vivo: "todos síganme" | Windows sin nada instalado |
 | `listo` | Tener una máquina de respaldo ya configurada | JDK 17, Maven 3.9, Git, VS Code + extensiones y el repo en el escritorio |
+
+## Alternativa rápida: Windows Sandbox
+
+Si tu equipo no expone `/dev/kvm` (pasa en PCs **AMD con la seguridad VBS / integridad de memoria** de Windows
+activada), usa **Windows Sandbox**, incluido en Windows 10/11 Pro: un Windows limpio que abre en segundos
+y se borra al cerrarlo.
+
+1. Actívalo una vez (PowerShell **como administrador**) y reinicia la PC:
+
+   ```powershell
+   Enable-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM -All
+   ```
+
+2. Crea un archivo `demo-windows-limpio.wsb` que comparta una carpeta con los instaladores:
+
+   ```xml
+   <Configuration>
+     <MemoryInMB>8192</MemoryInMB>
+     <MappedFolders>
+       <MappedFolder>
+         <HostFolder>C:\cursos\instaladores</HostFolder>
+         <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\instaladores</SandboxFolder>
+         <ReadOnly>true</ReadOnly>
+       </MappedFolder>
+     </MappedFolders>
+   </Configuration>
+   ```
+
+3. Doble clic en el `.wsb` y sigue la [instalación paso a paso](01-instalacion-windows-paso-a-paso.md).
+   Sandbox **no trae `winget`**: usa los instaladores `.msi` / `.exe` de la carpeta compartida
+   (los mismos enlaces de descarga del paso a paso).
 
 ## Requisitos del equipo anfitrión
 
